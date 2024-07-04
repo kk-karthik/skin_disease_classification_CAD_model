@@ -1,0 +1,11 @@
+trainX=readmatrix("C:\Users\Shrinithi\Desktop\Test Feature Files\Breast Density Classification\After PCA\SURF_Left_Size_Grid_k500_249_train_forcca_stdnew.csv");
+trainY=readmatrix("C:\Users\Shrinithi\Desktop\Test Feature Files\Breast Density Classification\After PCA\SURF_Right_Size_Grid_k500_249_train_forcca_stdnew.csv");
+testX=readmatrix("C:\Users\Shrinithi\Desktop\Test Feature Files\Breast Density Classification\After PCA\Left_SURF_PCA_1.csv");
+testY=readmatrix("C:\Users\Shrinithi\Desktop\Test Feature Files\Breast Density Classification\After PCA\Right_SURF_PCA_1.csv");
+[Wxcca,Wycca] = canoncorr(trainX,trainY);
+trainXcca = trainX * Wxcca;
+trainYcca = trainY * Wycca;
+testXcca = testX * Wxcca;
+testYcca = testY * Wycca;
+trainZ1 = [trainXcca, trainYcca];
+testZ1  = [testXcca, testYcca];
